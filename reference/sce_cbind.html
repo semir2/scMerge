@@ -224,7 +224,7 @@ The first assay named will be used to determine the proportion of zeores.</p></t
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    aperm, apply</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>'example_sce'</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'scMerge'</span>)
+#&gt; <span class='message'>    aperm, apply, rowsum</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>'example_sce'</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'scMerge'</span>)
 <span class='no'>batch_names</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>example_sce</span>$<span class='no'>batch</span>)
 <span class='no'>sce_list</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>example_sce</span>[,<span class='no'>example_sce</span>$<span class='no'>batch</span><span class='kw'>==</span><span class='st'>'batch2'</span>],
                <span class='no'>example_sce</span>[,<span class='no'>example_sce</span>$<span class='no'>batch</span><span class='kw'>==</span><span class='st'>'batch3'</span>])

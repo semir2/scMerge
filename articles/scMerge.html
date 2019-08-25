@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scMerge</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.5</span>
       </span>
     </div>
 
@@ -347,9 +347,9 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.62  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.64  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.46  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.48  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">scater<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/scater/topics/plot_reddim">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">  scMerge_fast, </a>
@@ -438,13 +438,13 @@
 <a class="sourceLine" id="cb22-20" data-line-number="20"><span class="co">#&gt; [8] methods   base     </span></a>
 <a class="sourceLine" id="cb22-21" data-line-number="21"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb22-22" data-line-number="22"><span class="co">#&gt; other attached packages:</span></a>
-<a class="sourceLine" id="cb22-23" data-line-number="23"><span class="co">#&gt;  [1] scater_1.13.11              ggplot2_3.2.0              </span></a>
-<a class="sourceLine" id="cb22-24" data-line-number="24"><span class="co">#&gt;  [3] scMerge_1.1.4               SingleCellExperiment_1.7.3 </span></a>
-<a class="sourceLine" id="cb22-25" data-line-number="25"><span class="co">#&gt;  [5] SummarizedExperiment_1.15.6 DelayedArray_0.11.4        </span></a>
-<a class="sourceLine" id="cb22-26" data-line-number="26"><span class="co">#&gt;  [7] BiocParallel_1.19.0         matrixStats_0.54.0         </span></a>
+<a class="sourceLine" id="cb22-23" data-line-number="23"><span class="co">#&gt;  [1] scater_1.13.16              ggplot2_3.2.1              </span></a>
+<a class="sourceLine" id="cb22-24" data-line-number="24"><span class="co">#&gt;  [3] scMerge_1.1.5               SingleCellExperiment_1.7.5 </span></a>
+<a class="sourceLine" id="cb22-25" data-line-number="25"><span class="co">#&gt;  [5] SummarizedExperiment_1.15.7 DelayedArray_0.11.4        </span></a>
+<a class="sourceLine" id="cb22-26" data-line-number="26"><span class="co">#&gt;  [7] BiocParallel_1.19.2         matrixStats_0.54.0         </span></a>
 <a class="sourceLine" id="cb22-27" data-line-number="27"><span class="co">#&gt;  [9] Biobase_2.45.0              GenomicRanges_1.37.14      </span></a>
-<a class="sourceLine" id="cb22-28" data-line-number="28"><span class="co">#&gt; [11] GenomeInfoDb_1.21.1         IRanges_2.19.10            </span></a>
-<a class="sourceLine" id="cb22-29" data-line-number="29"><span class="co">#&gt; [13] S4Vectors_0.23.17           BiocGenerics_0.31.5        </span></a>
+<a class="sourceLine" id="cb22-28" data-line-number="28"><span class="co">#&gt; [11] GenomeInfoDb_1.21.1         IRanges_2.19.12            </span></a>
+<a class="sourceLine" id="cb22-29" data-line-number="29"><span class="co">#&gt; [13] S4Vectors_0.23.19           BiocGenerics_0.31.5        </span></a>
 <a class="sourceLine" id="cb22-30" data-line-number="30"><span class="co">#&gt; [15] BiocStyle_2.13.2           </span></a>
 <a class="sourceLine" id="cb22-31" data-line-number="31"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb22-32" data-line-number="32"><span class="co">#&gt; loaded via a namespace (and not attached):</span></a>
@@ -459,14 +459,14 @@
 <a class="sourceLine" id="cb22-41" data-line-number="41"><span class="co">#&gt; [17] colorspace_1.4-1         nnet_7.3-12             </span></a>
 <a class="sourceLine" id="cb22-42" data-line-number="42"><span class="co">#&gt; [19] withr_2.1.2              gridExtra_2.3           </span></a>
 <a class="sourceLine" id="cb22-43" data-line-number="43"><span class="co">#&gt; [21] compiler_3.6.1           BiocNeighbors_1.3.3     </span></a>
-<a class="sourceLine" id="cb22-44" data-line-number="44"><span class="co">#&gt; [23] htmlTable_1.13.1         xml2_1.2.1              </span></a>
+<a class="sourceLine" id="cb22-44" data-line-number="44"><span class="co">#&gt; [23] htmlTable_1.13.1         xml2_1.2.2              </span></a>
 <a class="sourceLine" id="cb22-45" data-line-number="45"><span class="co">#&gt; [25] desc_1.2.0               labeling_0.3            </span></a>
-<a class="sourceLine" id="cb22-46" data-line-number="46"><span class="co">#&gt; [27] bookdown_0.12            caTools_1.17.1.2        </span></a>
+<a class="sourceLine" id="cb22-46" data-line-number="46"><span class="co">#&gt; [27] bookdown_0.13            caTools_1.17.1.2        </span></a>
 <a class="sourceLine" id="cb22-47" data-line-number="47"><span class="co">#&gt; [29] scales_1.0.0             checkmate_1.9.4         </span></a>
 <a class="sourceLine" id="cb22-48" data-line-number="48"><span class="co">#&gt; [31] proxy_0.4-23             pkgdown_1.3.0           </span></a>
 <a class="sourceLine" id="cb22-49" data-line-number="49"><span class="co">#&gt; [33] commonmark_1.7           stringr_1.4.0           </span></a>
 <a class="sourceLine" id="cb22-50" data-line-number="50"><span class="co">#&gt; [35] digest_0.6.20            foreign_0.8-72          </span></a>
-<a class="sourceLine" id="cb22-51" data-line-number="51"><span class="co">#&gt; [37] rmarkdown_1.14           XVector_0.25.0          </span></a>
+<a class="sourceLine" id="cb22-51" data-line-number="51"><span class="co">#&gt; [37] rmarkdown_1.15           XVector_0.25.0          </span></a>
 <a class="sourceLine" id="cb22-52" data-line-number="52"><span class="co">#&gt; [39] base64enc_0.1-3          pkgconfig_2.0.2         </span></a>
 <a class="sourceLine" id="cb22-53" data-line-number="53"><span class="co">#&gt; [41] htmltools_0.3.6          ruv_0.9.7               </span></a>
 <a class="sourceLine" id="cb22-54" data-line-number="54"><span class="co">#&gt; [43] bbmle_1.0.20             htmlwidgets_1.3         </span></a>
@@ -483,13 +483,13 @@
 <a class="sourceLine" id="cb22-65" data-line-number="65"><span class="co">#&gt; [65] grid_3.6.1               gdata_2.18.0            </span></a>
 <a class="sourceLine" id="cb22-66" data-line-number="66"><span class="co">#&gt; [67] M3Drop_1.11.4            reldist_1.6-6           </span></a>
 <a class="sourceLine" id="cb22-67" data-line-number="67"><span class="co">#&gt; [69] crayon_1.3.4             lattice_0.20-38         </span></a>
-<a class="sourceLine" id="cb22-68" data-line-number="68"><span class="co">#&gt; [71] splines_3.6.1            knitr_1.23              </span></a>
+<a class="sourceLine" id="cb22-68" data-line-number="68"><span class="co">#&gt; [71] splines_3.6.1            knitr_1.24              </span></a>
 <a class="sourceLine" id="cb22-69" data-line-number="69"><span class="co">#&gt; [73] pillar_1.4.2             igraph_1.2.4.1          </span></a>
 <a class="sourceLine" id="cb22-70" data-line-number="70"><span class="co">#&gt; [75] codetools_0.2-16         evaluate_0.14           </span></a>
 <a class="sourceLine" id="cb22-71" data-line-number="71"><span class="co">#&gt; [77] latticeExtra_0.6-28      data.table_1.12.2       </span></a>
 <a class="sourceLine" id="cb22-72" data-line-number="72"><span class="co">#&gt; [79] BiocManager_1.30.4       foreach_1.4.7           </span></a>
 <a class="sourceLine" id="cb22-73" data-line-number="73"><span class="co">#&gt; [81] gtable_0.3.0             assertthat_0.2.1        </span></a>
-<a class="sourceLine" id="cb22-74" data-line-number="74"><span class="co">#&gt; [83] xfun_0.8                 rsvd_1.0.2              </span></a>
+<a class="sourceLine" id="cb22-74" data-line-number="74"><span class="co">#&gt; [83] xfun_0.9                 rsvd_1.0.2              </span></a>
 <a class="sourceLine" id="cb22-75" data-line-number="75"><span class="co">#&gt; [85] RcppEigen_0.3.3.5.0      roxygen2_6.1.1          </span></a>
 <a class="sourceLine" id="cb22-76" data-line-number="76"><span class="co">#&gt; [87] viridisLite_0.3.0        survival_2.44-1.1       </span></a>
 <a class="sourceLine" id="cb22-77" data-line-number="77"><span class="co">#&gt; [89] tibble_2.1.3             iterators_1.0.12        </span></a>

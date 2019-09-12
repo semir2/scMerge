@@ -125,8 +125,9 @@
   <span class='kw'>exprs</span> <span class='kw'>=</span> <span class='st'>"logcounts"</span>, <span class='kw'>hvg_exprs</span> <span class='kw'>=</span> <span class='st'>"counts"</span>, <span class='kw'>marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>marker_list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>replicate_prop</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>cell_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cell_type_match</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cell_type_inc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"cor"</span>,
-  <span class='kw'>WV</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>WV_marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parallelParam</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
-  <span class='kw'>return_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>fast_svd</span>, <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>WV</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>WV_marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
+  <span class='kw'>return_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(<span class='kw'>fold</span> <span class='kw'>=</span> <span class='fl'>5</span>),
+  <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,7 +162,7 @@
     </tr>
     <tr>
       <th>replicate_prop</th>
-      <td><p>A number indicates the ratio of cells that are included in pseudo-replicates, ranges from 0 to 1</p></td>
+      <td><p>A number indicating the ratio of cells that are included in pseudo-replicates, ranges from 0 to 1. Default to 1.</p></td>
     </tr>
     <tr>
       <th>cell_type</th>
@@ -188,17 +189,16 @@
       <td><p>A vector indicates the markers of the wanted variation.</p></td>
     </tr>
     <tr>
-      <th>parallelParam</th>
-      <td><p>The <code>BiocParallelParam</code> class from the <code>BiocParallel</code> package is used. Default is SerialParam().</p></td>
+      <th>BPPARAM</th>
+      <td><p>A <code>BiocParallelParam</code> class object from the <code>BiocParallel</code> package is used. Default is SerialParam().</p></td>
     </tr>
     <tr>
       <th>return_all</th>
       <td><p>If <code>FALSE</code>, only return the replicate matrix.</p></td>
     </tr>
     <tr>
-      <th>fast_svd</th>
-      <td><p>If <code>TRUE</code>, fast algorithms will be used for singular value decomposition calculation via the <code>irlba</code> and <code>rsvd</code> packages.
-We recommend using this option when the number of cells is large (e.g. more than 1000 cells).</p></td>
+      <th>BSPARAM</th>
+      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam(fold = 5).</p></td>
     </tr>
     <tr>
       <th>plot_igraph</th>
@@ -232,8 +232,7 @@ should belong to that cell cluster and 0 otherwise.
 <span class='no'>scRep_result</span> <span class='kw'>=</span> <span class='fu'>scReplicate</span>(
   <span class='kw'>sce_combine</span> <span class='kw'>=</span> <span class='no'>example_sce</span>,
   <span class='kw'>batch</span> <span class='kw'>=</span> <span class='no'>example_sce</span>$<span class='no'>batch</span>,
-  <span class='kw'>kmeansK</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>),
-  <span class='kw'>fast_svd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='scReplicate-1.png' alt='' width='700' height='433' /></div><div class='input'>
+  <span class='kw'>kmeansK</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>))</div><div class='img'><img src='scReplicate-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

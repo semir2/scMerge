@@ -127,7 +127,8 @@ silhouette coefficient</p>
 
     <pre class="usage"><span class='fu'>scRUVIII</span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>, <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='no'>k</span>,
   <span class='kw'>cell_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>batch</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return_all_RUV</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>fast_svd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rsvd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
+  <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(), <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(<span class='kw'>fold</span> <span class='kw'>=</span> <span class='fl'>5</span>),
+  <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,14 +172,16 @@ pseudo-replicate procedure will be run to identify cell type.</p></td>
       <td><p>Whether to return extra information on the RUV function, inherited from the scMerge::scMerge function</p></td>
     </tr>
     <tr>
-      <th>fast_svd</th>
-      <td><p>If <code>TRUE</code>, fast algorithms will be used for singular value decomposition calculation via the <code>irlba</code> and <code>rsvd</code> packages.
-We recommend using this option when the number of cells is large (e.g. more than 1000 cells).</p></td>
+      <th>BPPARAM</th>
+      <td><p>A <code>BiocParallelParam</code> class object from the <code>BiocParallel</code> package is used. Default is SerialParam().</p></td>
     </tr>
     <tr>
-      <th>rsvd_prop</th>
-      <td><p>If <code>fast_svd = TRUE</code>, then <code>rsvd_prop</code> will be used to used to
-reduce the computational cost of randomised singular value decomposition.
+      <th>BSPARAM</th>
+      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam(fold = 5).</p></td>
+    </tr>
+    <tr>
+      <th>svd_prop</th>
+      <td><p>If <code>BSPARAM</code> is not <code>ExactParam</code>, then <code>svd_prop</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
 We recommend setting this number to less than 0.25 to achieve a balance between numerical accuracy and computational costs.
 If a lower value is used on a lower dimensional data (say &lt; 1000 cell) will potentially yield a
 less accurate computed result but with a gain in speed.

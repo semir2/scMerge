@@ -121,9 +121,10 @@
     <p>Perform a fast version of the ruv::RUVIII algorithm for scRNA-Seq data noise estimation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fastRUVIII</span>(<span class='no'>Y</span>, <span class='no'>M</span>, <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fast_svd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>rsvd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>include.intercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>average</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>inputcheck</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>fastRUVIII</span>(<span class='no'>Y</span>, <span class='no'>M</span>, <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>include.intercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>average</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
+  <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(<span class='kw'>fold</span> <span class='kw'>=</span> <span class='fl'>5</span>), <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>return.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>inputcheck</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,13 +154,8 @@ See ruv::RUVIII for more details.</p></td>
       <td><p>Gene-wise (as opposed to sample-wise) covariates. See ruv::RUVIII for details.</p></td>
     </tr>
     <tr>
-      <th>fast_svd</th>
-      <td><p>If <code>TRUE</code>, fast algorithms will be used for singular value decomposition calculation via the <code>irlba</code> and <code>rsvd</code> packages. 
-We recommend using this option when the number of cells is large (e.g. more than 1000 cells).</p></td>
-    </tr>
-    <tr>
-      <th>rsvd_prop</th>
-      <td><p>If <code>fast_svd = TRUE</code>, then <code>rsvd_prop</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
+      <th>svd_prop</th>
+      <td><p>If <code>BSPARAM</code> is not <code>ExactParam</code>, then <code>svd_prop</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
 We recommend setting this number to less than 0.25 to achieve a balance between numerical accuracy and computational costs.</p></td>
     </tr>
     <tr>
@@ -170,6 +166,14 @@ See ruv::RUVIII for details.</p></td>
     <tr>
       <th>average</th>
       <td><p>Average replicates after adjustment. See ruv::RUVIII for details.</p></td>
+    </tr>
+    <tr>
+      <th>BPPARAM</th>
+      <td><p>A <code>BiocParallelParam</code> class object from the <code>BiocParallel</code> package is used. Default is SerialParam().</p></td>
+    </tr>
+    <tr>
+      <th>BSPARAM</th>
+      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam(fold = 5).</p></td>
     </tr>
     <tr>
       <th>fullalpha</th>
@@ -192,10 +196,12 @@ See ruv::RUVIII for details.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>L</span> <span class='kw'>=</span> <span class='fu'><a href='ruvSimulate.html'>ruvSimulate</a></span>(<span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>nc</span> <span class='kw'>=</span> <span class='fl'>400</span>, <span class='kw'>nCelltypes</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nBatch</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>lambda</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>sce</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='no'>Y</span> <span class='kw'>=</span> <span class='no'>L</span>$<span class='no'>Y</span>; <span class='no'>M</span> <span class='kw'>=</span> <span class='no'>L</span>$<span class='no'>M</span>; <span class='no'>ctl</span> <span class='kw'>=</span> <span class='no'>L</span>$<span class='no'>ctl</span>
-<span class='no'>improved1</span> <span class='kw'>=</span> <span class='kw pkg'>scMerge</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scMerge/man/fastRUVIII.html'>fastRUVIII</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>fast_svd</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>improved2</span> <span class='kw'>=</span> <span class='kw pkg'>scMerge</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scMerge/man/fastRUVIII.html'>fastRUVIII</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>fast_svd</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>rsvd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
+<span class='no'>improved1</span> <span class='kw'>=</span> <span class='kw pkg'>scMerge</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scMerge/man/fastRUVIII.html'>fastRUVIII</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>,
+<span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='kw pkg'>BiocSingular</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/BiocSingular/man/BiocSingularParam.html'>ExactParam</a></span>())
+<span class='no'>improved2</span> <span class='kw'>=</span> <span class='kw pkg'>scMerge</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/scMerge/man/fastRUVIII.html'>fastRUVIII</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>,
+<span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='kw pkg'>BiocSingular</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/BiocSingular/man/BiocSingularParam.html'>RandomParam</a></span>(), <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
 <span class='no'>old</span> <span class='kw'>=</span> <span class='kw pkg'>ruv</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ruv/man/RUVIII.html'>RUVIII</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>20</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>improved1</span>, <span class='no'>old</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>improved2</span>, <span class='no'>old</span>)</div><div class='output co'>#&gt; [1] "Mean relative difference: 0.07815471"</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>improved1</span>, <span class='no'>old</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>improved2</span>, <span class='no'>old</span>)</div><div class='output co'>#&gt; [1] "Mean relative difference: 0.09295919"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

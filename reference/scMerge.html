@@ -88,7 +88,9 @@ leveraging (pseudo)-replicates and control genes." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown-header">Case Study</li>
+<li>
+  <a href="../articles/index.html">Case Study</a>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -127,9 +129,9 @@ leveraging (pseudo)-replicates and control genes.</p>
   <span class='kw'>hvg_exprs</span> <span class='kw'>=</span> <span class='st'>"counts"</span>, <span class='kw'>marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>marker_list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>ruvK</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>replicate_prop</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>cell_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cell_type_match</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cell_type_inc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(<span class='kw'>fold</span> <span class='kw'>=</span> <span class='fl'>5</span>), <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"cor"</span>,
-  <span class='kw'>WV</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>WV_marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
-  <span class='kw'>return_all_RUV</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>assay_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(), <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"cor"</span>, <span class='kw'>WV</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>WV_marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(), <span class='kw'>return_all_RUV</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>BACKEND</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>assay_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -185,7 +187,7 @@ leveraging (pseudo)-replicates and control genes.</p>
     </tr>
     <tr>
       <th>BSPARAM</th>
-      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam(fold = 5).</p></td>
+      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam().</p></td>
     </tr>
     <tr>
       <th>svd_prop</th>
@@ -212,6 +214,11 @@ reduce the computational cost of randomised singular value decomposition. Defaul
       <th>return_all_RUV</th>
       <td><p>If <code>FALSE</code>, then only returns a <code>SingleCellExperiment</code> object with original data and one normalised matrix.
 Otherwise, the <code>SingleCellExperiment</code> object will contain the original data and one normalised matrix for <code>each</code> ruvK value. In this latter case, assay_name must have the same length as ruvK.</p></td>
+    </tr>
+    <tr>
+      <th>BACKEND</th>
+      <td><p>The BACKEND parameter used in DelayedArray::realize(result, BACKEND = BACKEND) to coerce the final output. 
+Default to NULL, see DelayedArray::supportedRealizationBackends() for other options.</p></td>
     </tr>
     <tr>
       <th>assay_name</th>
@@ -269,7 +276,7 @@ Otherwise, the <code>SingleCellExperiment</code> object will contain the origina
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

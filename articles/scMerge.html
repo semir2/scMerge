@@ -331,7 +331,7 @@
 <div id="using-approximated-svd" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-approximated-svd" class="anchor"></a>Using approximated SVD</h2>
-<p>Under most circumstances, <code>scMerge</code> is fast enough to be used on a personal laptop for a moderately large data. However, we do recognise the difficulties associated with computation when dealing with larger data. To this end, we devised a fast version of <code>scMerge</code>. The major difference between the two versions lies on the noise estimation component, which utilised singular value decomposition (SVD). In order to speed up <code>scMerge</code>, we used <code>BiocSingular</code> package that offers several SVD speed improvements. This computational method is able to speed up <code>scMerge</code> by obtain a very accurate approximation of the noise structure in the data. This option is achieved via the option <code>BSPARAM = IrlbaParam()</code> or <code>BSPARAM = RandomParam()</code>. Additionally, <code>svd_prop</code> is a parameter between 0 and 1, controlling the degree of approximations.</p>
+<p>Under most circumstances, <code>scMerge</code> is fast enough to be used on a personal laptop for a moderately large data. However, we do recognise the difficulties associated with computation when dealing with larger data. To this end, we devised a fast version of <code>scMerge</code>. The major difference between the two versions lies on the noise estimation component, which utilised singular value decomposition (SVD). In order to speed up <code>scMerge</code>, we used <code>BiocSingular</code> package that offers several SVD speed improvements. This computational method is able to speed up <code>scMerge</code> by obtain a very accurate approximation of the noise structure in the data. This option is achieved via the option <code>BSPARAM = IrlbaParam()</code> or <code>BSPARAM = RandomParam()</code>. Additionally, <code>svd_k</code> is a parameter that controlling the degree of approximations.</p>
 <p>We recommend using this option in the case where the number of cells is large in your single cell data. The speed advantage we obtain for large single cell data is much more dramatic than on a smaller dataset like the example mESC data. For example, a single run of normal <code>scMerge</code> on a human <a href="https://sydneybiox.github.io/scMerge/articles/Pancreas4_Data/Pancreas4_Data.html">pancreas data</a> (23699 features and 4566 cells) takes about 10 minutes whereas the speed up version takes just under 4 minutes.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(BiocSingular)</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">scMerge_fast &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scMerge.html">scMerge</a></span>(</a>
@@ -340,13 +340,13 @@
 <a class="sourceLine" id="cb17-5" data-line-number="5">  <span class="dt">kmeansK =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">3</span>),</a>
 <a class="sourceLine" id="cb17-6" data-line-number="6">  <span class="dt">assay_name =</span> <span class="st">"scMerge_fast"</span>, </a>
 <a class="sourceLine" id="cb17-7" data-line-number="7">  <span class="dt">BSPARAM =</span> <span class="kw"><a href="https://rdrr.io/pkg/BiocSingular/man/BiocSingularParam.html">IrlbaParam</a></span>(), </a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">  <span class="dt">svd_prop =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">  <span class="dt">svd_k =</span> <span class="dv">20</span>)</a>
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.85  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.82  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.61  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.56  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">  scMerge_fast, </a>
@@ -355,7 +355,7 @@
 <a class="sourceLine" id="cb18-10" data-line-number="10">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_fast"</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb18-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"fast scMerge yields similar results to the default version"</span>)</a>
 <a class="sourceLine" id="cb18-12" data-line-number="12"><span class="co">#&gt; Warning: call 'runPCA' explicitly to compute results</span></a></code></pre></div>
-<p><img src="scMerge_files/figure-html/computation_rsvd_plotting-1.png" width="700"></p>
+<p><img src="scMerge_files/figure-html/computation_svd_plotting-1.png" width="700"></p>
 </div>
 <div id="parallelised-computing" class="section level2">
 <h2 class="hasAnchor">

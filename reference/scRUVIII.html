@@ -156,7 +156,7 @@ silhouette coefficient</p>
 
     <pre class="usage"><span class='fu'>scRUVIII</span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>Y</span>, <span class='kw'>M</span> <span class='kw'>=</span> <span class='no'>M</span>, <span class='kw'>ctl</span> <span class='kw'>=</span> <span class='no'>ctl</span>, <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='no'>k</span>,
   <span class='kw'>cell_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>batch</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return_all_RUV</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(), <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(), <span class='kw'>svd_prop</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
+  <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(), <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(), <span class='kw'>svd_k</span> <span class='kw'>=</span> <span class='fl'>50</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,8 +208,8 @@ pseudo-replicate procedure will be run to identify cell type.</p></td>
       <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam().</p></td>
     </tr>
     <tr>
-      <th>svd_prop</th>
-      <td><p>If <code>BSPARAM</code> is not <code>ExactParam</code>, then <code>svd_prop</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
+      <th>svd_k</th>
+      <td><p>If <code>BSPARAM</code> is not <code>ExactParam</code>, then <code>svd_k</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
 We recommend setting this number to less than 0.25 to achieve a balance between numerical accuracy and computational costs.
 If a lower value is used on a lower dimensional data (say &lt; 1000 cell) will potentially yield a
 less accurate computed result but with a gain in speed.

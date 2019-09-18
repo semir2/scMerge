@@ -49,8 +49,35 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Case Study
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/index.html">Case Study</a>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/Breast_Data.html">Breast cancer data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/CellBench_Data.html">CellBench data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/ESC_Data.html">Embyronic stem cell data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/Mouse_Liver_Data.html">Mouse liver data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/Neuronal_Data.html">Neuronal single cell data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/Pancreas4_Data.html">Four pancreas data</a>
+    </li>
+    <li>
+      <a href="https://sydneybiox.github.io/scMerge/articles/case_study/mESC_Data.html">Mouse Embryonic Stem Cell Data</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -317,9 +344,9 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.84  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.85  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.58  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.61  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">  scMerge_fast, </a>

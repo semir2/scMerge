@@ -344,9 +344,9 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  1.52  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  1.57  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.6  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.62  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">  scMerge_fast, </a>
@@ -434,7 +434,7 @@
 <a class="sourceLine" id="cb21-30" data-line-number="30"><span class="co">#&gt; [15] BiocGenerics_0.31.5         BiocStyle_2.13.2           </span></a>
 <a class="sourceLine" id="cb21-31" data-line-number="31"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb21-32" data-line-number="32"><span class="co">#&gt; loaded via a namespace (and not attached):</span></a>
-<a class="sourceLine" id="cb21-33" data-line-number="33"><span class="co">#&gt;  [1] nlme_3.1-140             bitops_1.0-6            </span></a>
+<a class="sourceLine" id="cb21-33" data-line-number="33"><span class="co">#&gt;  [1] nlme_3.1-141             bitops_1.0-6            </span></a>
 <a class="sourceLine" id="cb21-34" data-line-number="34"><span class="co">#&gt;  [3] fs_1.3.1                 RColorBrewer_1.1-2      </span></a>
 <a class="sourceLine" id="cb21-35" data-line-number="35"><span class="co">#&gt;  [5] rprojroot_1.3-2          numDeriv_2016.8-1.1     </span></a>
 <a class="sourceLine" id="cb21-36" data-line-number="36"><span class="co">#&gt;  [7] tools_3.6.1              backports_1.1.4         </span></a>
@@ -449,9 +449,9 @@
 <a class="sourceLine" id="cb21-45" data-line-number="45"><span class="co">#&gt; [25] labeling_0.3             bookdown_0.13           </span></a>
 <a class="sourceLine" id="cb21-46" data-line-number="46"><span class="co">#&gt; [27] sfsmisc_1.1-4            caTools_1.17.1.2        </span></a>
 <a class="sourceLine" id="cb21-47" data-line-number="47"><span class="co">#&gt; [29] scales_1.0.0             checkmate_1.9.4         </span></a>
-<a class="sourceLine" id="cb21-48" data-line-number="48"><span class="co">#&gt; [31] proxy_0.4-23             pkgdown_1.4.1           </span></a>
+<a class="sourceLine" id="cb21-48" data-line-number="48"><span class="co">#&gt; [31] proxy_0.4-23             pkgdown_1.4.1.9000      </span></a>
 <a class="sourceLine" id="cb21-49" data-line-number="49"><span class="co">#&gt; [33] stringr_1.4.0            digest_0.6.20           </span></a>
-<a class="sourceLine" id="cb21-50" data-line-number="50"><span class="co">#&gt; [35] foreign_0.8-71           rmarkdown_1.15          </span></a>
+<a class="sourceLine" id="cb21-50" data-line-number="50"><span class="co">#&gt; [35] foreign_0.8-72           rmarkdown_1.15          </span></a>
 <a class="sourceLine" id="cb21-51" data-line-number="51"><span class="co">#&gt; [37] XVector_0.25.0           base64enc_0.1-3         </span></a>
 <a class="sourceLine" id="cb21-52" data-line-number="52"><span class="co">#&gt; [39] pkgconfig_2.0.2          htmltools_0.3.6         </span></a>
 <a class="sourceLine" id="cb21-53" data-line-number="53"><span class="co">#&gt; [41] ruv_0.9.7.1              bbmle_1.0.20            </span></a>
@@ -518,7 +518,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

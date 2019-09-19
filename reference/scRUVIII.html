@@ -209,11 +209,8 @@ pseudo-replicate procedure will be run to identify cell type.</p></td>
     </tr>
     <tr>
       <th>svd_k</th>
-      <td><p>If <code>BSPARAM</code> is not <code>ExactParam</code>, then <code>svd_k</code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
-We recommend setting this number to less than 0.25 to achieve a balance between numerical accuracy and computational costs.
-If a lower value is used on a lower dimensional data (say &lt; 1000 cell) will potentially yield a
-less accurate computed result but with a gain in speed.
-The default of 0.1 tends to achieve a balance between speed and accuracy.</p></td>
+      <td><p>If BSPARAM is set to <code>RandomParam</code> or <code>IrlbaParam</code> class from <code>BiocSingular</code> package, then 
+<code>svd_k</code> will be used to used to reduce the computational cost of singular value decomposition. Default to 50.</p></td>
     </tr>
     </table>
 
@@ -252,7 +249,7 @@ all the supplied k values will be returned.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

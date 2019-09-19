@@ -183,6 +183,11 @@ See ruv::RUVIII for more details.</p></td>
       <td><p>Gene-wise (as opposed to sample-wise) covariates. See ruv::RUVIII for details.</p></td>
     </tr>
     <tr>
+      <th>svd_k</th>
+      <td><p>If BSPARAM is set to <code>RandomParam</code> or <code>IrlbaParam</code> class from <code>BiocSingular</code> package, then 
+<code>svd_k</code> will be used to used to reduce the computational cost of singular value decomposition. Default to 50.</p></td>
+    </tr>
+    <tr>
       <th>include.intercept</th>
       <td><p>When eta is specified (not NULL) but does not already include an intercept term, this will automatically include one.
 See ruv::RUVIII for details.</p></td>
@@ -210,11 +215,6 @@ See ruv::RUVIII for details.</p></td>
     <tr>
       <th>inputcheck</th>
       <td><p>We recommend setting this to true.</p></td>
-    </tr>
-    <tr>
-      <th>If</th>
-      <td><p><code>BSPARAM</code> is not <code>ExactParam</code>, then <code></code> will be used to used to reduce the computational cost of randomised singular value decomposition. 
-We recommend setting this number to less than 0.25 to achieve a balance between numerical accuracy and computational costs.</p></td>
     </tr>
     </table>
 
@@ -252,7 +252,7 @@ We recommend setting this number to less than 0.25 to achieve a balance between 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

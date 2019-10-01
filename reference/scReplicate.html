@@ -155,8 +155,8 @@
   <span class='kw'>marker_list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>replicate_prop</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>cell_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>cell_type_match</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cell_type_inc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"cor"</span>,
   <span class='kw'>WV</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>WV_marker</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
-  <span class='kw'>return_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(<span class='kw'>fold</span> <span class='kw'>=</span> <span class='fl'>5</span>),
-  <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>return_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(), <span class='kw'>plot_igraph</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,7 +227,7 @@
     </tr>
     <tr>
       <th>BSPARAM</th>
-      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam(fold = 5).</p></td>
+      <td><p>A <code>BiocSingularParam</code> class object from the <code>BiocSingular</code> package is used. Default is ExactParam().</p></td>
     </tr>
     <tr>
       <th>plot_igraph</th>

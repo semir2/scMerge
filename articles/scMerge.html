@@ -344,9 +344,9 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  1.59  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  1.9  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.61  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.64  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7">  scMerge_fast, </a>
@@ -424,7 +424,7 @@
 <a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co">#&gt; [8] methods   base     </span></a>
 <a class="sourceLine" id="cb21-21" data-line-number="21"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb21-22" data-line-number="22"><span class="co">#&gt; other attached packages:</span></a>
-<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="co">#&gt;  [1] BiocSingular_1.1.7          scater_1.13.23             </span></a>
+<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="co">#&gt;  [1] BiocSingular_1.1.7          scater_1.13.24             </span></a>
 <a class="sourceLine" id="cb21-24" data-line-number="24"><span class="co">#&gt;  [3] ggplot2_3.2.1               scMerge_1.1.6              </span></a>
 <a class="sourceLine" id="cb21-25" data-line-number="25"><span class="co">#&gt;  [5] SingleCellExperiment_1.7.11 SummarizedExperiment_1.15.9</span></a>
 <a class="sourceLine" id="cb21-26" data-line-number="26"><span class="co">#&gt;  [7] DelayedArray_0.11.6         BiocParallel_1.19.3        </span></a>
@@ -446,12 +446,12 @@
 <a class="sourceLine" id="cb21-42" data-line-number="42"><span class="co">#&gt; [19] withr_2.1.2              gridExtra_2.3           </span></a>
 <a class="sourceLine" id="cb21-43" data-line-number="43"><span class="co">#&gt; [21] compiler_3.6.1           BiocNeighbors_1.3.5     </span></a>
 <a class="sourceLine" id="cb21-44" data-line-number="44"><span class="co">#&gt; [23] htmlTable_1.13.2         desc_1.2.0              </span></a>
-<a class="sourceLine" id="cb21-45" data-line-number="45"><span class="co">#&gt; [25] labeling_0.3             bookdown_0.13           </span></a>
+<a class="sourceLine" id="cb21-45" data-line-number="45"><span class="co">#&gt; [25] labeling_0.3             bookdown_0.14           </span></a>
 <a class="sourceLine" id="cb21-46" data-line-number="46"><span class="co">#&gt; [27] sfsmisc_1.1-4            caTools_1.17.1.2        </span></a>
 <a class="sourceLine" id="cb21-47" data-line-number="47"><span class="co">#&gt; [29] scales_1.0.0             checkmate_1.9.4         </span></a>
 <a class="sourceLine" id="cb21-48" data-line-number="48"><span class="co">#&gt; [31] proxy_0.4-23             pkgdown_1.4.1.9000      </span></a>
 <a class="sourceLine" id="cb21-49" data-line-number="49"><span class="co">#&gt; [33] stringr_1.4.0            digest_0.6.21           </span></a>
-<a class="sourceLine" id="cb21-50" data-line-number="50"><span class="co">#&gt; [35] foreign_0.8-72           rmarkdown_1.15          </span></a>
+<a class="sourceLine" id="cb21-50" data-line-number="50"><span class="co">#&gt; [35] foreign_0.8-72           rmarkdown_1.16          </span></a>
 <a class="sourceLine" id="cb21-51" data-line-number="51"><span class="co">#&gt; [37] XVector_0.25.0           base64enc_0.1-3         </span></a>
 <a class="sourceLine" id="cb21-52" data-line-number="52"><span class="co">#&gt; [39] pkgconfig_2.0.3          htmltools_0.3.6         </span></a>
 <a class="sourceLine" id="cb21-53" data-line-number="53"><span class="co">#&gt; [41] ruv_0.9.7.1              bbmle_1.0.20            </span></a>
@@ -474,7 +474,7 @@
 <a class="sourceLine" id="cb21-70" data-line-number="70"><span class="co">#&gt; [75] evaluate_0.14            latticeExtra_0.6-28     </span></a>
 <a class="sourceLine" id="cb21-71" data-line-number="71"><span class="co">#&gt; [77] data.table_1.12.2        BiocManager_1.30.4      </span></a>
 <a class="sourceLine" id="cb21-72" data-line-number="72"><span class="co">#&gt; [79] gtable_0.3.0             assertthat_0.2.1        </span></a>
-<a class="sourceLine" id="cb21-73" data-line-number="73"><span class="co">#&gt; [81] xfun_0.9                 rsvd_1.0.2              </span></a>
+<a class="sourceLine" id="cb21-73" data-line-number="73"><span class="co">#&gt; [81] xfun_0.10                rsvd_1.0.2              </span></a>
 <a class="sourceLine" id="cb21-74" data-line-number="74"><span class="co">#&gt; [83] viridisLite_0.3.0        survival_2.44-1.1       </span></a>
 <a class="sourceLine" id="cb21-75" data-line-number="75"><span class="co">#&gt; [85] tibble_2.1.3             beeswarm_0.2.3          </span></a>
 <a class="sourceLine" id="cb21-76" data-line-number="76"><span class="co">#&gt; [87] memoise_1.1.0            cluster_2.1.0           </span></a>

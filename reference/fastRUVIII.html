@@ -150,10 +150,21 @@
     <p>Perform a fast version of the ruv::RUVIII algorithm for scRNA-Seq data noise estimation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fastRUVIII</span>(<span class='no'>Y</span>, <span class='no'>M</span>, <span class='no'>ctl</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>svd_k</span> <span class='kw'>=</span> <span class='fl'>50</span>,
-  <span class='kw'>include.intercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>average</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
-  <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(), <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>inputcheck</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>fastRUVIII</span>(
+  <span class='no'>Y</span>,
+  <span class='no'>M</span>,
+  <span class='no'>ctl</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>eta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>svd_k</span> <span class='kw'>=</span> <span class='fl'>50</span>,
+  <span class='kw'>include.intercept</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>average</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>SerialParam</span>(),
+  <span class='kw'>BSPARAM</span> <span class='kw'>=</span> <span class='fu'>ExactParam</span>(),
+  <span class='kw'>fullalpha</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>return.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>inputcheck</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

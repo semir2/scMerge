@@ -142,7 +142,7 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">## Subsetted mouse ESC data</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"example_sce"</span>, <span class="dt">package =</span> <span class="st">"scMerge"</span>)</a></code></pre></div>
 <p>In this mESC data, we pooled data from 2 different batches from three different cell types. Using a PCA plot, we can see that despite strong separation of cell types, there is also a strong separation due to batch effects. This information is stored in the <code>colData</code> of <code>example_sce</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">example_sce =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(example_sce)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">example_sce =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(example_sce, <span class="dt">exprs_values =</span> <span class="st">"logcounts"</span>)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">  example_sce, </a>
@@ -179,12 +179,11 @@
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <p>We now colour construct the PCA plot again on our normalised data. We can observe a much better separation by cell type and less separation by batches.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">scMerge_unsupervised =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_unsupervised)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">scMerge_unsupervised =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_unsupervised, <span class="dt">exprs_values =</span> <span class="st">"scMerge_unsupervised"</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">  scMerge_unsupervised, </a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_unsupervised"</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/unsupervised_default_plotting-1.png" width="700"></p>
 <!-- ##Selecting 80% of cells -->
 <!-- ```{r results='hide',fig.show='hide'} -->
@@ -211,13 +210,13 @@
 <a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">replicate_prop =</span> <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">scMerge_unsupervised_all =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_unsupervised_all)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">  scMerge_unsupervised_all, </a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_unsupervised_all"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">scMerge_unsupervised_all =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_unsupervised_all,</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">                                  <span class="dt">exprs_values =</span> <span class="st">"scMerge_unsupervised_all"</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  scMerge_unsupervised_all, </a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/unsupervised_prop1_plotting-1.png" width="700"></p>
 <!-- ##Selecting 20% of cells -->
 <!-- ```{r results='hide',fig.show='hide'} -->
@@ -245,13 +244,13 @@
 <a class="sourceLine" id="cb9-6" data-line-number="6">  <span class="dt">cell_type =</span> example_sce<span class="op">$</span>cellTypes)</a>
 <a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">scMerge_supervised =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_supervised)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">  scMerge_supervised,</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>,</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_supervised"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">scMerge_supervised =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_supervised,</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                            <span class="dt">exprs_values =</span> <span class="st">"scMerge_supervised"</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  scMerge_supervised,</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>,</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/supervised_plotting-1.png" width="700"></p>
 </div>
 <div id="semi-supervised-scmerge-i" class="section level1">
@@ -268,13 +267,13 @@
 <a class="sourceLine" id="cb11-8" data-line-number="8">  <span class="dt">cell_type_match =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">scMerge_semisupervised1 =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_semisupervised1)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">  scMerge_semisupervised1, </a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_semisupervised1"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">scMerge_semisupervised1 =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_semisupervised1,</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">                                 <span class="dt">exprs_values =</span> <span class="st">"scMerge_semisupervised1"</span>)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  scMerge_semisupervised1, </a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/semi_supervised1_plotting-1.png" width="700"></p>
 </div>
 <div id="semi-supervised-scmerge-ii" class="section level1">
@@ -292,13 +291,13 @@
 <a class="sourceLine" id="cb13-8" data-line-number="8">  <span class="dt">cell_type_match =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">scMerge_semisupervised2 =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_semisupervised2)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">  scMerge_semisupervised2, </a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_semisupervised2"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">scMerge_semisupervised2 =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/runPCA.html">runPCA</a></span>(scMerge_semisupervised2,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                                 <span class="dt">exprs_values =</span> <span class="st">"scMerge_semisupervised2"</span>)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">  scMerge_semisupervised2, </a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/semi_supervised2_plotting-1.png" width="700"></p>
 </div>
 <div id="selectnc" class="section level1">
@@ -349,18 +348,17 @@
 <a class="sourceLine" id="cb17-9" data-line-number="9"><span class="co">#&gt; Step 2: Performing RUV normalisation. This will take minutes to hours.</span></a>
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="co">#&gt; scMerge complete!</span></a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Normally, scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t2 <span class="op">-</span><span class="st"> </span>t1, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.86  seconds"</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "Normally, scMerge takes  0.69  seconds"</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Fast version of scMerge takes "</span>, <span class="kw"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(t4 <span class="op">-</span><span class="st"> </span>t3, <span class="dv">2</span>), <span class="st">" seconds"</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.58  seconds"</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="co">#&gt; [1] "Fast version of scMerge takes  0.47  seconds"</span></a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">scMerge_fast =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html">runPCA</a></span>(scMerge_fast)</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">scMerge_fast =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html">runPCA</a></span>(scMerge_fast, <span class="dt">exprs_values =</span> <span class="st">"scMerge_fast"</span>)</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb18-8" data-line-number="8">scater<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html">plotPCA</a></span>(</a>
 <a class="sourceLine" id="cb18-9" data-line-number="9">  scMerge_fast, </a>
 <a class="sourceLine" id="cb18-10" data-line-number="10">  <span class="dt">colour_by =</span> <span class="st">"cellTypes"</span>, </a>
-<a class="sourceLine" id="cb18-11" data-line-number="11">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>,</a>
-<a class="sourceLine" id="cb18-12" data-line-number="12">  <span class="dt">run_args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">exprs_values =</span> <span class="st">"scMerge_fast"</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb18-13" data-line-number="13"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"fast scMerge yields similar results to the default version"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb18-11" data-line-number="11">  <span class="dt">shape_by =</span> <span class="st">"batch"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"fast scMerge yields similar results to the default version"</span>)</a></code></pre></div>
 <p><img src="scMerge_files/figure-html/computation_svd_plotting-1.png" width="700"></p>
 </div>
 <div id="parallelised-computing" class="section level2">
@@ -430,7 +428,7 @@
 <a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co">#&gt; [8] methods   base     </span></a>
 <a class="sourceLine" id="cb21-21" data-line-number="21"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb21-22" data-line-number="22"><span class="co">#&gt; other attached packages:</span></a>
-<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="co">#&gt;  [1] BiocSingular_1.2.0          scater_1.14.5              </span></a>
+<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="co">#&gt;  [1] BiocSingular_1.2.0          scater_1.14.6              </span></a>
 <a class="sourceLine" id="cb21-24" data-line-number="24"><span class="co">#&gt;  [3] ggplot2_3.2.1               scMerge_1.3.0              </span></a>
 <a class="sourceLine" id="cb21-25" data-line-number="25"><span class="co">#&gt;  [5] SingleCellExperiment_1.8.0  SummarizedExperiment_1.16.0</span></a>
 <a class="sourceLine" id="cb21-26" data-line-number="26"><span class="co">#&gt;  [7] DelayedArray_0.12.0         BiocParallel_1.20.0        </span></a>
